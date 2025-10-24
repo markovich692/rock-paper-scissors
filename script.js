@@ -21,3 +21,9 @@ const getHumanChoice = function () {
 
   return playerChoice;
 };
+
+// Retrieves and stores the computer and human choices for a single round
+const playRound = function (computerChoice, humanChoice) {
+  computerChoice = getComputerChoice();
+  humanChoice = getHumanChoice();
+};
