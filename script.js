@@ -1,5 +1,7 @@
 // Create an array of possible choices
 const choices = ["rock", "paper", "scissors"];
+let humanScore = 0;
+let compuerScore = 0;
 
 // Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
