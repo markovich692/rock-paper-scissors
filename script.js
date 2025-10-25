@@ -1,7 +1,8 @@
 // Create an array of possible choices
 const choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
-let compuerScore = 0;
+let computerScore = 0;
+let tieScore = 0;
 
 // Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
@@ -24,6 +25,7 @@ const getHumanChoice = function () {
 
 // Retrieves and stores the computer and human choices for a single round
 const playRound = function (computerChoice, humanChoice) {
-  computerChoice = getComputerChoice();
-  humanChoice = getHumanChoice();
+  //Stores the humanChoice and the computerChoice
+  const computerSelection = computerChoice();
+  const humanSelection = humanChoice();
 };
