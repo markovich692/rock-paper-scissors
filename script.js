@@ -20,13 +20,9 @@ const getHumanChoice = function () {
   return playerChoice;
 };
 
-// Retrieves and stores the computer and human choices for a single round
-const playRound = function (computerChoice, humanChoice) {
-  //Stores the humanChoice and the computerChoice
-  const computerSelection = computerChoice();
-  const humanSelection = humanChoice();
+// Contains the game rules and logs the result based on both player choices
 
-  // Defines the game conditions and logs the outcome messages (win, lose, or tie)
+const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
     console.log(`It's a tie`);
   }
@@ -48,4 +44,14 @@ const playRound = function (computerChoice, humanChoice) {
   if (computerSelection === "paper" && humanSelection === "scissors") {
     console.log(`You win! Scissors beats Paper`);
   }
+};
+
+// Retrieves and stores the computer and human choices for a single round
+const playRound = function (computerChoice, humanChoice) {
+  //Stores the humanChoice and the computerChoice
+  const computerSelection = computerChoice();
+  const humanSelection = humanChoice();
+
+  // Passes both selections to the gameLogic function to determine and log the result
+  gameLogic(computerSelection, humanSelection);
 };
