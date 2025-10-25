@@ -6,13 +6,13 @@ let tieScore = 0;
 let computerScore = 0;
 let humanScore = 0;
 
-// Returns a random choice between 'rock', 'paper', or 'scissors'
+//Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
   const randomChoiceIndex = Math.trunc(Math.floor(Math.random() * choices.length));
   return choices[randomChoiceIndex];
 };
 
-// Returns the player's choice between 'rock', 'paper', or 'scissors'
+//Returns the player's choice between 'rock', 'paper', or 'scissors'
 const getHumanChoice = function () {
   //Prompt the player to enter a choice
   let playerChoice = prompt("Enter your choice:").toLowerCase().trim();
@@ -25,7 +25,7 @@ const getHumanChoice = function () {
   return playerChoice;
 };
 
-// Handles game logic: determines the winner, logs the result, and updates the scores
+//Handles game logic: determines the winner, logs the result, and updates the scores
 const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
     console.log(`It's a tie`);
@@ -83,4 +83,9 @@ const playGame = function () {
 
   //Logs the winner of the game
   gameWinner();
+
+  //Resets game scores
+  tieScore = 0;
+  computerScore = 0;
+  humanScore = 0;
 };
