@@ -57,6 +57,13 @@ const gameLogic = function (computerSelection, humanSelection) {
   }
 };
 
+//Logs the winner of the game
+const gameWinner = function () {
+  if (computerScore === humanScore) console.log("This is a tie game");
+  if (computerScore > humanScore) console.log("You lost the game!");
+  if (computerScore < humanScore) console.log("You won the game!");
+};
+
 // Retrieves and stores the computer and human choices for a single round
 const playRound = function (computerChoice, humanChoice) {
   //Stores the humanChoice and the computerChoice
@@ -65,4 +72,15 @@ const playRound = function (computerChoice, humanChoice) {
 
   // Passes both selections to the gameLogic function to determine and log the result
   gameLogic(computerSelection, humanSelection);
+};
+
+//Starts the game
+const playGame = function () {
+  //Allows 5 rounds per game session
+  for (let i = 0; i < 5; i++) {
+    playRound(getComputerChoice, getHumanChoice);
+  }
+
+  //Logs the winner of the game
+  gameWinner();
 };
