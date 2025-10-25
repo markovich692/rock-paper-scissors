@@ -1,8 +1,5 @@
 // Create an array of possible choices
 const choices = ["rock", "paper", "scissors"];
-let humanScore = 0;
-let computerScore = 0;
-let tieScore = 0;
 
 // Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
@@ -28,4 +25,27 @@ const playRound = function (computerChoice, humanChoice) {
   //Stores the humanChoice and the computerChoice
   const computerSelection = computerChoice();
   const humanSelection = humanChoice();
+
+  // Defines the game conditions and logs the outcome messages (win, lose, or tie)
+  if (computerSelection === humanSelection) {
+    console.log(`It's a tie`);
+  }
+  if (computerSelection === "rock" && humanSelection === "scissors") {
+    console.log(`You lose! Rock beats Scissors`);
+  }
+  if (computerSelection === "paper" && humanSelection === "rock") {
+    console.log(`You lose! Paper beats Rock`);
+  }
+  if (computerSelection === "scissors" && humanSelection === "paper") {
+    console.log(`You lose! Scissors beats Paper`);
+  }
+  if (computerSelection === "scissors" && humanSelection === "rock") {
+    console.log(`You win! Rock beats Scissors`);
+  }
+  if (computerSelection === "rock" && humanSelection === "paper") {
+    console.log(`You win! Paper beats Rock`);
+  }
+  if (computerSelection === "paper" && humanSelection === "scissors") {
+    console.log(`You win! Scissors beats Paper`);
+  }
 };
