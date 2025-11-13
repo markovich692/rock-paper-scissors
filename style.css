@@ -19,6 +19,9 @@ body {
   height: 100 vh;
   background-color: orangered;
   padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game {
