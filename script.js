@@ -92,3 +92,12 @@ const playGame = function () {
   humanScore = 0;
 };
 
+//GAMEPLAY
+
+const gameChoiceButtons = document.querySelectorAll(".game__choice-btn");
+
+gameChoiceButtons.forEach(function (playerChoice) {
+  playerChoice.addEventListener("click", function (choice) {
+    playRound(getComputerChoice, getHumanChoice);
+  });
+});
