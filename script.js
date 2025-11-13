@@ -76,16 +76,19 @@ const playRound = function (computerChoice, humanChoice) {
 
 //Starts the game
 const playGame = function () {
-  //Allows 5 rounds per game session
-  for (let i = 0; i < 5; i++) {
+  //Allows 5 rounds per game session - Logic to play 5 rounds
+  /*for (let i = 0; i < 5; i++) {
     playRound(getComputerChoice, getHumanChoice);
-  }
+  }*/
 
-  //Logs the winner of the game
-  gameWinner();
+  playRound(getComputerChoice, getHumanChoice);
+
+  //Logs the winner of the game - WINNER
+  // gameWinner();
 
   //Resets game scores
   tieScore = 0;
   computerScore = 0;
   humanScore = 0;
 };
+
