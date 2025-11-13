@@ -14,7 +14,7 @@ const getComputerChoice = function () {
 };
 
 //Returns the player's choice between 'rock', 'paper', or 'scissors'
-const getHumanChoice = function () {
+/*const getHumanChoice = function () {
   //Prompt the player to enter a choice
   let playerChoice = prompt("Enter your choice:").toLowerCase().trim();
 
@@ -24,7 +24,7 @@ const getHumanChoice = function () {
   }
 
   return playerChoice;
-};
+}; */
 
 //Handles game logic: determines the winner, logs the result, and updates the scores
 const gameLogic = function (computerSelection, humanSelection) {
@@ -33,28 +33,28 @@ const gameLogic = function (computerSelection, humanSelection) {
     tieScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "scissors") {
-    result = `You lose! Rock beats Scissors`;
+    result = `You lose the round! Rock beats Scissors`;
     computerScore += 1;
   }
   if (computerSelection === "paper" && humanSelection === "rock") {
-    result = `You lose! Paper beats Rock`;
+    result = `You lose the round! Paper beats Rock`;
 
     computerScore += 1;
   }
   if (computerSelection === "scissors" && humanSelection === "paper") {
-    result = `You lose! Scissors beats Paper`;
+    result = `You lose the round! Scissors beats Paper`;
     computerScore += 1;
   }
   if (computerSelection === "scissors" && humanSelection === "rock") {
-    result = `You win! Rock beats Scissors`;
+    result = `You win the round! Rock beats Scissors`;
     humanScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "paper") {
-    result = `You win! Paper beats Rock`;
+    result = `You win the round! Paper beats Rock`;
     humanScore += 1;
   }
   if (computerSelection === "paper" && humanSelection === "scissors") {
-    result = `You win! Scissors beats Paper`;
+    result = `You win the round! Scissors beats Paper`;
     humanScore += 1;
   }
 };
@@ -70,7 +70,7 @@ const gameWinner = function () {
 const playRound = function (computerChoice, humanChoice) {
   //Stores the humanChoice and the computerChoice
   const computerSelection = computerChoice();
-  const humanSelection = humanChoice();
+  const humanSelection = humanChoice;
 
   // Passes both selections to the gameLogic function to determine and log the result
   gameLogic(computerSelection, humanSelection);
@@ -100,7 +100,9 @@ const gameChoiceButtons = document.querySelectorAll(".game__choice-btn");
 
 gameChoiceButtons.forEach(function (playerChoice) {
   playerChoice.addEventListener("click", function () {
+    let getHumanChoice = document.querySelector(".game__choice-btn").textContent.toLowerCase();
+    let gameResult = document.querySelector(".game__round-result");
     playRound(getComputerChoice, getHumanChoice);
-    console.log(result);
+    gameResult.textContent = result;
   });
 });

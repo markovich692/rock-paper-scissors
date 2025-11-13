@@ -24,6 +24,7 @@ body {
 .game {
   text-align: center;
   width: 120rem;
+  height: 100rem;
   background-color: lightblue;
   margin: 0 auto;
 }
@@ -35,10 +36,9 @@ body {
   background-color: greenyellow;
 }
 
-.game__result {
+.game__round-result {
   height: 35rem;
   margin-bottom: 3rem;
-
   background-color: lightpink;
 }
 
@@ -46,6 +46,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 8rem 0;
 }
 
 .game__choice {
