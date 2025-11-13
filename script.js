@@ -5,6 +5,7 @@ const choices = ["rock", "paper", "scissors"];
 let tieScore = 0;
 let computerScore = 0;
 let humanScore = 0;
+let result = "";
 
 //Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
@@ -28,31 +29,32 @@ const getHumanChoice = function () {
 //Handles game logic: determines the winner, logs the result, and updates the scores
 const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
-    console.log(`It's a tie`);
+    result = `It's a tie`;
     tieScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "scissors") {
-    console.log(`You lose! Rock beats Scissors`);
+    result = `You lose! Rock beats Scissors`;
     computerScore += 1;
   }
   if (computerSelection === "paper" && humanSelection === "rock") {
-    console.log(`You lose! Paper beats Rock`);
+    result = `You lose! Paper beats Rock`;
+
     computerScore += 1;
   }
   if (computerSelection === "scissors" && humanSelection === "paper") {
-    console.log(`You lose! Scissors beats Paper`);
+    result = `You lose! Scissors beats Paper`;
     computerScore += 1;
   }
   if (computerSelection === "scissors" && humanSelection === "rock") {
-    console.log(`You win! Rock beats Scissors`);
+    result = `You win! Rock beats Scissors`;
     humanScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "paper") {
-    console.log(`You win! Paper beats Rock`);
+    result = `You win! Paper beats Rock`;
     humanScore += 1;
   }
   if (computerSelection === "paper" && humanSelection === "scissors") {
-    console.log(`You win! Scissors beats Paper`);
+    result = `You win! Scissors beats Paper`;
     humanScore += 1;
   }
 };
@@ -97,7 +99,8 @@ const playGame = function () {
 const gameChoiceButtons = document.querySelectorAll(".game__choice-btn");
 
 gameChoiceButtons.forEach(function (playerChoice) {
-  playerChoice.addEventListener("click", function (choice) {
+  playerChoice.addEventListener("click", function () {
     playRound(getComputerChoice, getHumanChoice);
+    console.log(result);
   });
 });
