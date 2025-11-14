@@ -6,6 +6,21 @@ let tieScore = 0;
 let computerScore = 0;
 let humanScore = 0;
 let result = "";
+let round = 0;
+let gameStart = false;
+
+//ELEMENTS
+const gameStartButton = document.querySelector(".game__start-button");
+
+const playerChoiceButtons = document.querySelectorAll(".game__choice-btn");
+
+const roundDisplay = document.querySelector(".game__round-number");
+
+const gameResult = document.querySelector(".game__result-message");
+
+const gameRoundNumber = document.querySelector(".game__round-number");
+
+gameRoundNumber.textContent = `Round: ${round}`;
 
 //Returns a random choice between 'rock', 'paper', or 'scissors'
 const getComputerChoice = function () {
@@ -44,13 +59,26 @@ const gameLogic = function (computerSelection, humanSelection) {
     result = `You win the round! Scissors beats Paper`;
     humanScore += 1;
   }
+
+  gameRoundNumber.textContent = `Round: ${round}`;
+  gameResult.textContent = result;
 };
 
 //Logs the winner of the game
 const gameWinner = function () {
-  if (computerScore === humanScore) console.log("This is a tie game");
-  if (computerScore > humanScore) console.log("You lost the game!");
-  if (computerScore < humanScore) console.log("You won the game!");
+  if (computerScore === humanScore) {
+    result = "This is a tie game. Start a new one!";
+  } else if (computerScore > humanScore) {
+    result = "You lost the game! Start a new one!";
+  } else {
+    result = "You won the game! Start a new one!";
+  }
+
+  gameResult.textContent = result;
+  tieScore = 0;
+  computerScore = 0;
+  humanScore = 0;
+  round = 0;
 };
 
 // Retrieves and stores the computer and human choices for a single round
@@ -63,34 +91,39 @@ const playRound = function (computerChoice, humanChoice) {
   gameLogic(computerSelection, humanSelection);
 };
 
-//Starts the game
-const playGame = function () {
-  //Allows 5 rounds per game session - Logic to play 5 rounds
-  for (let i = 0; i < 5; i++) {
-    playRound(getComputerChoice, getHumanChoice);
+//Starts the game passing the getHumanChoice on click of any of the choices
+const playGame = function (humanChoice) {
+  if (round < 5) {
+    round += 1;
+    playRound(getComputerChoice, humanChoice);
   }
-  playRound(getComputerChoice, getHumanChoice);
 
-  //Logs the winner of the game - WINNER
-  // gameWinner();
-
-  //Resets game scores
-  tieScore = 0;
-  computerScore = 0;
-  humanScore = 0;
+  if (round === 5) {
+    gameWinner();
+    gameStart = false;
+  }
 };
 
 //GAMEPLAY
 
-const gameChoiceButtons = document.querySelectorAll(".game__choice-btn");
+playerChoiceButtons.forEach(function (playerChoice) {
+  playerChoice.addEventListener("click", function (event) {
+    if (!gameStart) return;
 
-gameChoiceButtons.forEach(function (playerChoice) {
-  playerChoice.addEventListener("click", function () {
-    let getHumanChoice = document.querySelector(".game__choice-btn").textContent.toLowerCase();
-    let gameResult = document.querySelector(".game__result-message");
-    playRound(getComputerChoice, getHumanChoice);
-    gameResult.textContent = result;
+    //Get human choice on click of any of the choice button
+    let getHumanChoice = event.target.innerText.toLowerCase();
+
+    playGame(getHumanChoice);
   });
 });
 
-//////////////////////////o/oo/ooo
+//START GAME
+gameStartButton.addEventListener("click", function () {
+  tieScore = 0;
+  computerScore = 0;
+  humanScore = 0;
+  round = 0;
+  gameStart = true;
+  roundDisplay.textContent = round;
+  gameResult.textContent = "Make a choice";
+});
