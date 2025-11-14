@@ -13,19 +13,6 @@ const getComputerChoice = function () {
   return choices[randomChoiceIndex];
 };
 
-//Returns the player's choice between 'rock', 'paper', or 'scissors'
-/*const getHumanChoice = function () {
-  //Prompt the player to enter a choice
-  let playerChoice = prompt("Enter your choice:").toLowerCase().trim();
-
-  //Validate input: keep prompting until the player enters a valid choice
-  while (!playerChoice || (playerChoice !== "rock" && playerChoice !== "paper" && playerChoice !== "scissors")) {
-    playerChoice = prompt("Enter your choice:").toLowerCase().trim();
-  }
-
-  return playerChoice;
-}; */
-
 //Handles game logic: determines the winner, logs the result, and updates the scores
 const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
@@ -101,7 +88,7 @@ const gameChoiceButtons = document.querySelectorAll(".game__choice-btn");
 gameChoiceButtons.forEach(function (playerChoice) {
   playerChoice.addEventListener("click", function () {
     let getHumanChoice = document.querySelector(".game__choice-btn").textContent.toLowerCase();
-    let gameResult = document.querySelector(".game__round-result");
+    let gameResult = document.querySelector(".game__result-message");
     playRound(getComputerChoice, getHumanChoice);
     gameResult.textContent = result;
   });

@@ -24,7 +24,7 @@ body {
 .game {
   text-align: center;
   width: 120rem;
-  height: 100rem;
+
   background-color: lightblue;
   margin: 0 auto;
 }
@@ -35,9 +35,19 @@ body {
   margin-bottom: 3rem;
   background-color: greenyellow;
 }
+/* TEST */
+.game__board {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+}
 
-.game__round-result {
-  height: 35rem;
+.game__round-number {
+  background-color: wheat;
+  align-self: flex-start;
+}
+
+.game__result-message {
   margin-bottom: 3rem;
   background-color: lightpink;
 }
