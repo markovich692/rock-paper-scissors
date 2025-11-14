@@ -47,8 +47,24 @@ body {
   justify-content: space-between;
 }
 
-.game__button-start{
-    
+.game__start-button {
+}
+
+.game__scores {
+  width: 28rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game__score-player {
+}
+
+.user-score {
+  padding-right: 2rem;
+}
+
+.computer-score {
 }
 
 .game__round-number {

@@ -2,7 +2,7 @@
 const choices = ["rock", "paper", "scissors"];
 
 //Define score variables for the computer, human, and ties
-let tieScore = 0;
+// let tieScore = 0;
 let computerScore = 0;
 let humanScore = 0;
 let result = "";
@@ -14,12 +14,18 @@ const gameStartButton = document.querySelector(".game__start-button");
 
 const playerChoiceButtons = document.querySelectorAll(".game__choice-btn");
 
-const roundDisplay = document.querySelector(".game__round-number");
-
 const gameResult = document.querySelector(".game__result-message");
 
 const gameRoundNumber = document.querySelector(".game__round-number");
 
+const userScore = document.querySelector(".user-score");
+
+const compScore = document.querySelector(".computer-score");
+
+//------------------------------------------------------------------------------
+
+userScore.textContent = `Player: ${humanScore}`;
+compScore.textContent = `Computer: ${computerScore}`;
 gameRoundNumber.textContent = `Round: ${round}`;
 
 //Returns a random choice between 'rock', 'paper', or 'scissors'
@@ -32,7 +38,8 @@ const getComputerChoice = function () {
 const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
     result = `It's a tie round`;
-    tieScore += 1;
+    computerScore += 1;
+    humanScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "scissors") {
     result = `You lose the round! Rock beats Scissors`;
@@ -60,7 +67,10 @@ const gameLogic = function (computerSelection, humanSelection) {
     humanScore += 1;
   }
 
+  userScore.textContent = `Player score: ${humanScore}`;
+  compScore.textContent = `Computer score: ${computerScore}`;
   gameRoundNumber.textContent = `Round: ${round}`;
+
   gameResult.textContent = result;
 };
 
@@ -75,10 +85,6 @@ const gameWinner = function () {
   }
 
   gameResult.textContent = result;
-  tieScore = 0;
-  computerScore = 0;
-  humanScore = 0;
-  round = 0;
 };
 
 // Retrieves and stores the computer and human choices for a single round
@@ -119,11 +125,16 @@ playerChoiceButtons.forEach(function (playerChoice) {
 
 //START GAME
 gameStartButton.addEventListener("click", function () {
-  tieScore = 0;
+  // tieScore = 0;
   computerScore = 0;
   humanScore = 0;
   round = 0;
   gameStart = true;
-  roundDisplay.textContent = round;
+
+  ////////////////
+  userScore.textContent = `Player score: ${humanScore}`;
+  compScore.textContent = `Computer score: ${computerScore}`;
+  gameRoundNumber.textContent = round;
+  //////////////////////
   gameResult.textContent = "Make a choice";
 });
