@@ -1,8 +1,8 @@
 // Create an array of possible choices
 const choices = ["rock", "paper", "scissors"];
 
-//Define score variables for the computer, human, and ties
-// let tieScore = 0;
+//Define score variables for the computer, human
+
 let computerScore = 0;
 let humanScore = 0;
 let result = "";
@@ -21,8 +21,6 @@ const gameRoundNumber = document.querySelector(".game__round-number");
 const userScore = document.querySelector(".user-score");
 
 const compScore = document.querySelector(".computer-score");
-
-//------------------------------------------------------------------------------
 
 userScore.textContent = `Player: ${humanScore}`;
 compScore.textContent = `Computer: ${computerScore}`;
@@ -67,8 +65,8 @@ const gameLogic = function (computerSelection, humanSelection) {
     humanScore += 1;
   }
 
-  userScore.textContent = `Player score: ${humanScore}`;
-  compScore.textContent = `Computer score: ${computerScore}`;
+  userScore.textContent = `Player: ${humanScore}`;
+  compScore.textContent = `Computer: ${computerScore}`;
   gameRoundNumber.textContent = `Round: ${round}`;
 
   gameResult.textContent = result;
@@ -125,16 +123,14 @@ playerChoiceButtons.forEach(function (playerChoice) {
 
 //START GAME
 gameStartButton.addEventListener("click", function () {
-  // tieScore = 0;
   computerScore = 0;
   humanScore = 0;
   round = 0;
   gameStart = true;
 
-  ////////////////
-  userScore.textContent = `Player score: ${humanScore}`;
-  compScore.textContent = `Computer score: ${computerScore}`;
-  gameRoundNumber.textContent = round;
-  //////////////////////
+  userScore.textContent = `Player: ${humanScore}`;
+  compScore.textContent = `Computer: ${computerScore}`;
+  gameRoundNumber.textContent = `Round: ${round}`;
+
   gameResult.textContent = "Make a choice";
 });
