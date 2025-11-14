@@ -16,7 +16,7 @@ const getComputerChoice = function () {
 //Handles game logic: determines the winner, logs the result, and updates the scores
 const gameLogic = function (computerSelection, humanSelection) {
   if (computerSelection === humanSelection) {
-    result = `It's a tie`;
+    result = `It's a tie round`;
     tieScore += 1;
   }
   if (computerSelection === "rock" && humanSelection === "scissors") {
@@ -66,10 +66,9 @@ const playRound = function (computerChoice, humanChoice) {
 //Starts the game
 const playGame = function () {
   //Allows 5 rounds per game session - Logic to play 5 rounds
-  /*for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     playRound(getComputerChoice, getHumanChoice);
-  }*/
-
+  }
   playRound(getComputerChoice, getHumanChoice);
 
   //Logs the winner of the game - WINNER
@@ -93,3 +92,5 @@ gameChoiceButtons.forEach(function (playerChoice) {
     gameResult.textContent = result;
   });
 });
+
+//////////////////////////o/oo/ooo

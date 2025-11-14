@@ -42,9 +42,16 @@ body {
   padding: 0 4rem;
 }
 
+.game__board-main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game__button-start{
+    
+}
+
 .game__round-number {
-  background-color: wheat;
-  align-self: flex-start;
 }
 
 .game__result-message {
